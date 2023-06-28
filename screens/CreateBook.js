@@ -190,6 +190,7 @@ const CreateBook = ({ navigation, route }) => {
           value={numberPages}
           theme={theme}
           onFocus={() => setenableShift(true)}
+          keyboardType="number-pad"
           mode="outlined"
           onChangeText={(text) => setNumberPages(text)}
         />
@@ -199,6 +200,7 @@ const CreateBook = ({ navigation, route }) => {
           value={edits}
           theme={theme}
           onFocus={() => setenableShift(true)}
+          keyboardType="number-pad"
           mode="outlined"
           onChangeText={(text) => setEdits(text)}
         />

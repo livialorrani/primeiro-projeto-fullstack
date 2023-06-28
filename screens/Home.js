@@ -47,8 +47,8 @@ const Home = ({ navigation, route }) => {
             source={{ uri: item.picture }}
           />
           <View style={{ marginLeft: 10 }}>
-            <Text style={styles.text}>{item.name}</Text>
-            <Text style={styles.text}>{item.position}</Text>
+            <Text style={styles.text}>{item.title}</Text>
+            <Text style={styles.text}>{item.author}</Text>
           </View>
         </View>
       </Card>
@@ -72,7 +72,7 @@ const Home = ({ navigation, route }) => {
         style={styles.fab}
         small={false}
         icon="plus"
-        theme={{ colors: { accent: '#006aff' } }}
+        theme={{ colors: { accent: '#46737F' } }}
       />
     </View>
   );
