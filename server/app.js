@@ -67,7 +67,7 @@ app.delete('/delete', (req, res) => {
 
 app.put('/update', (req, res) => {
   Book.findByIdAndUpdate(req.body.id, {
-    name: req.body.name,
+    title: req.body.title,
     author: req.body.author,
     year: req.body.year,
     picture: req.body.picture,
