@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Linking, Platform, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Title, Card, Button } from 'react-native-paper'
-import { MaterialIcons, Entypo } from '@expo/vector-icons'
+import { MaterialIcons, FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons'
 
 const Profile = (props) => {
 
-    const { _id, title, picture, year, numberPages, email, edits } = props.route.params.item
+    const { _id, title, picture, year, numberPages, author, edits } = props.route.params.item
     const deleteBook = () => {
         fetch("http://192.168.0.115:3000/delete", {
             method: "delete",
@@ -26,13 +26,6 @@ const Profile = (props) => {
                 Alert.alert("alguma coisa deu errado")
             })
     }
-    const openDial = () => {
-        if (Platform.OS === "android") {
-            Linking.openURL(`tel:${year}`)
-        } else {
-            Linking.openURL(`telprompt:${year}`)
-        }
-    }
     return (
         <View style={styles.root}>
             <LinearGradient
@@ -46,27 +39,31 @@ const Profile = (props) => {
                 />
             </View>
             <View style={{ alignItems: "center", margin: 15 }}>
-                <Title>{Title}</Title>
-                <Text style={{ fontSize: 15 }}>{edits}</Text>
+                <Title>{title}</Title>
+                <Text style={{ fontSize: 15 }}>{title}</Text>
             </View>
-            <Card style={styles.mycard} onPress={() => {
-                Linking.openURL(`mailto:${email}`)
-            }}>
+            <Card style={styles.mycard}>
                 <View style={styles.cardContent}>
-                    <MaterialIcons name="email" size={32} color="#006aff" />
-                    <Text style={styles.mytext}>{email}</Text>
+                    <MaterialIcons name="person" size={32} color="#46737F" />
+                    <Text style={styles.mytext}>{author}</Text>
                 </View>
             </Card>
-            <Card style={styles.mycard} onPress={() => openDial()}>
+            <Card style={styles.mycard}>
                 <View style={styles.cardContent}>
-                    <Entypo name="year" size={32} color="#006aff" />
+                    <FontAwesome5 name="calendar-alt" size={32} color="#46737F" />
                     <Text style={styles.mytext}>{year}</Text>
                 </View>
             </Card>
             <Card style={styles.mycard}>
                 <View style={styles.cardContent}>
-                    <MaterialIcons name="attach-money" size={32} color="#006aff" />
+                    <MaterialCommunityIcons name="book-open-page-variant" size={32} color="#46737F" />
                     <Text style={styles.mytext}>{numberPages}</Text>
+                </View>
+            </Card>
+            <Card style={styles.mycard}>
+                <View style={styles.cardContent}>
+                    <MaterialCommunityIcons name="book-edit" size={32} color="#46737F" />
+                    <Text style={styles.mytext}>{edits}</Text>
                 </View>
             </Card>
             <View style={{ flexDirection: "row", justifyContent: "space-around", padding: 10 }}>
@@ -76,7 +73,7 @@ const Profile = (props) => {
                     theme={theme}
                     onPress={() => {
                         props.navigation.navigate("Create",
-                            { _id, title, picture, year, numberPages, email, edits }
+                            { _id, title, picture, year, numberPages, author, edits }
                         )
                     }}>
                     Editar
@@ -97,7 +94,7 @@ const Profile = (props) => {
 
 const theme = {
     colors: {
-        primary: "#006aff"
+        primary: "#46737F"
     }
 }
 
