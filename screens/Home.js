@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image, FlatList, Alert } from 'react-native';
 import { Card, FAB } from 'react-native-paper';
 import { useSelector, useDispatch } from 'react-redux';
